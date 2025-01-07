@@ -60,7 +60,21 @@
             >;
         };
 
-        extra_1 { status = "reserved"; };
+        function_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            display-name = "Function";
+            bindings = <
+&kp TAB    &kp F1    &kp F2  &kp F3    &kp F4     &kp F5              &kp F6             &kp F7     &kp F8           &kp F9    &kp F10   &kp F11
+&kp LCTRL  &trans    &trans  &trans    &kp GRAVE  &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp MINUS  &kp EQUAL        &trans    &kp BSLH  &kp F12
+&kp LSHFT  &trans    &trans  &trans    &kp TILDE  &kp LEFT_BRACE      &kp RIGHT_BRACE    &kp UNDER  &kp PLUS         &trans    &kp PIPE  &kp TILDE
+                             &kp LGUI  &trans     &kp SPACE           &kp RET            &trans     &kp RALT
+            >;
+        };
 
         extra_2 { status = "reserved"; };
 
