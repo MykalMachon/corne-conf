@@ -18,7 +18,10 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Draw the keymap
-        run: cd ./drawer && ./draw.sh
+        run: |
+          cd ./drawer
+          chmod +x ./draw.sh
+          ./draw.sh
 
       - name: Save keymap to repo
         run: |
