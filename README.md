@@ -1,4 +1,7 @@
-# Corne v2 Config 
+# Corne v2 Config
+
+![Latest Firmware Build](https://github.com/mykalmachon/corne-conf/actions/workflows/build.yml/badge.svg)
+![Latest Keymap Render](https://github.com/mykalmachon/corne-conf/actions/workflows/draw.yml/badge.svg)
 
 This repo allows me to edit, build, and download firmware for my Corne v2. 
 
