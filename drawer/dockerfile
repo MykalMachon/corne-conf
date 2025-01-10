@@ -1,7 +1,12 @@
 FROM python:3.14-alpine
 
+# setup environment
 WORKDIR /app
 RUN mkdir /app/output
+
+# copy over required files
+copy drawer_conf.yaml .
+copy ../config .
 
 # install pipx 
 RUN python3 -m pip install --user pipx
@@ -15,4 +20,4 @@ RUN pipx install keymap-drawer
 RUN keymap parse -c 12 /app/config/corne.keymap > corne_keymap.yaml
 
 # create the SVG keymap drawing 
-CMD keymap draw corne_keymap.yaml > /app/output/corne_layout.svg
+CMD keymap -c drawer_conf.yaml draw corne_keymap.yaml > /app/output/corne_layout.svg
