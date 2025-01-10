@@ -1,0 +1,18 @@
+FROM python:3.14-alpine
+
+WORKDIR /app
+RUN mkdir /app/output
+
+# install pipx 
+RUN python3 -m pip install --user pipx
+RUN python3 -m pipx ensurepath
+RUN pipx ensurepath --global 
+
+# install keymap-drawer
+RUN pipx install keymap-drawer
+
+# create a yaml file repro of my keymap
+RUN keymap parse -c 12 /app/config/corne.keymap > corne_keymap.yaml
+
+# create the SVG keymap drawing 
+CMD keymap draw corne_keymap.yaml > /app/output/corne_layout.svg
