@@ -4,6 +4,12 @@ This repo allows me to edit, build, and download firmware for my Corne v2.
 
 ![A wireless Corne V2 keyboard with an orange case, black blank keycaps, and nice! view microcontrollers and boards](./docs/assets/corne_v2_picture.jpg)
 
+## Keyboard Layout
+
+![automatically generated layout](./docs/assets/corne_layout.svg)
+
+This layout is automatically generated using `keymap-drawer`. If you're curious how that works, please check out the `drawer` folder.
+
 ## How do I download the firmware?
 
 Check out the actions tab and look at the "artifacts" for each action run. 

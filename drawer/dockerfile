@@ -1,23 +1,24 @@
-FROM python:3.14-alpine
+FROM ubuntu:noble
 
 # setup environment
 WORKDIR /app
 RUN mkdir /app/output
 
-# copy over required files
-copy drawer_conf.yaml .
-copy ../config .
-
 # install pipx 
-RUN python3 -m pip install --user pipx
-RUN python3 -m pipx ensurepath
-RUN pipx ensurepath --global 
+RUN apt update && apt install pipx -y && rm -rf /var/lib/apt/lists/*
+RUN pipx ensurepath
 
 # install keymap-drawer
 RUN pipx install keymap-drawer
 
-# create a yaml file repro of my keymap
-RUN keymap parse -c 12 /app/config/corne.keymap > corne_keymap.yaml
+# set user 
+USER root
+
+# copy over required files
+COPY drawer/drawer_conf.yaml .
+COPY drawer/generate.sh .
+COPY config ./config
 
 # create the SVG keymap drawing 
-CMD keymap -c drawer_conf.yaml draw corne_keymap.yaml > /app/output/corne_layout.svg
+RUN chmod +x ./generate.sh
+ENTRYPOINT [ "./generate.sh" ]

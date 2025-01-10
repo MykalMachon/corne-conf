@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build --tag drawer:local .
-docker run -v ../docs/assets/:/app/output drawer:local
+docker build --file ./drawer/dockerfile --tag drawer:local . 
+docker run -v $PWD/docs/assets/:/app/output drawer:local
