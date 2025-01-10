@@ -1,5 +1,5 @@
 # only runs when changes to config are made
-name: Draw Keymap
+name: Update Keymap
 
 on: 
   push:
