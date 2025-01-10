@@ -3,9 +3,9 @@ name: Draw Keymap
 
 on: 
   push:
-    paths: ['./config/**']
+    paths: ['config/**']
   pull_request:
-    paths: ['./config/**']
+    paths: ['config/**']
   workflow_dispatch:
 
 
