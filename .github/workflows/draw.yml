@@ -1,0 +1,29 @@
+# only runs when changes to config are made
+name: Draw Keymap
+
+on: 
+  push:
+    paths: ['./config/**']
+  pull_request:
+    paths: ['./config/**']
+  workflow_dispatch:
+
+
+jobs:
+ draw:
+    name: Draw Keymap    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull repo
+        uses: actions/checkout@v4
+      
+      - name: Draw the keymap
+        run: ./drawer/draw.sh
+
+      - name: Save keymap to repo
+        run: |
+          git config --global user.name 'Mykal Machon'
+          git config --global user.email 'mykalmachon@users.noreply.github.com'
+          git add .
+          git commit -m "auto: new keymap drawing" -m "automated creation of a new keymap triggerd by ${{ github.action }}"
+          git push
